@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;	
+	font-family: Raleway, sans-serif;
+}
+body {
+    background: #46458C;
+}
+.login_form{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    justify-content: center;
+    left: 50%;
+    top: 50%;
+    background: linear-gradient(90deg, #C7C5F4, #776BCC);		
+    border-radius: 5px;
+    padding: 5px;
+    height: auto;
+    width:  250px;
+
+
+    transform: translate(-50%, -50%) scale(1);
+    transition:all 0.5s ease,  
+
+}
+
+.register_form{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    justify-content: center;
+    left: 50%;
+    top: 50%;
+    background: linear-gradient(90deg, #C7C5F4, #776BCC);		
+    border-radius: 5px;
+    padding: 5px;
+    height: auto;
+    width:  250px;
+    transform: translate(-50%, -50%) scale(1);
+    transition:all 0.5s ease,  
+}
+
+
+.image{
+    text-align: center;
+}
+
+.image .image_user{
+    display: flex;
+    justify-content: center;
+
+}
+
+footer{
+    display: flex;
+    text-align: center;
+    height: 100px;
+    margin: 10px;
+    padding: 25px;
+    justify-content: center;
+}
+
+button{
+    margin: 10px;
+}
+
+.social_media_image{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.social_media_image .linkedin{
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.social_media_image .linkedin:hover{
+    margin: 5px;
+    transform:  scale(1.5);
+}
+
+
+.social_media_image .github{
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.social_media_image .github:hover{
+    
+    transform:  scale(1.5);
+}
+
+.social_media_image .twitter{
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.social_media_image .twitter:hover{
+    
+    transform:  scale(1.5);
+}
+
+
+
+
