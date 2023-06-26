@@ -26,3 +26,48 @@ ui.registerBtn.addEventListener("click",function () {
     
 })
 
+ui.girisBtn.addEventListener("click",function () {
+    
+    event.preventDefault();
+
+    let validation = loginValidation()
+    if(validation == false) return false;
+    
+})
+
+function loginValidation() {
+    let validation = [
+        {
+         name: "email",
+         message: "Lütfen email bilginizi girin!"
+        },
+        {
+        name: "password",
+        message: "Lütfen şifrenizi girin!"
+        }]
+        
+        let formDolumu = true;
+
+        validation.forEach(item=>{
+            if (referance[item.name].value == "") {
+                document.getElementById(item.name + "-message").innerHTML = item.message;
+                formDolumu = false;
+                
+            }
+            else{
+                document.getElementById(item.message + "-message").innerHTML = "";
+                formDolumu = true;
+            }
+            
+        })
+        return formDolumu;
+       
+    
+}
+
+let referance = {
+    email: document.getElementById("email"),
+    password: document.getElementById("password")
+}
+    
+

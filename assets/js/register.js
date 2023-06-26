@@ -12,33 +12,37 @@ const svgElementLinkedin = document.querySelector(".linkedin").addEventListener(
     window.open("https://www.linkedin.com/in/koray-din%C3%A7-30185a25b/", "_blank");
 });
 
-let reference = {
-  ad: document.getElementById("name"),
-  soyad: document.getElementById("lastname"),
+let referance = {
+  ad: document.getElementById("ad"),
+  soyad: document.getElementById("soyad"),
   email: document.getElementById("email"),
   password: document.getElementById("password"),
-  rePassword: document.getElementById("re-password")
+  rePassword: document.getElementById("rePassword")
 };
 
+
 document.querySelector(".registerPageBtn").addEventListener("click", function() {
-  if (reference.email.value === '' || reference.password.value === '') {
-    registerClear();
-    SwalWarning('Kayıt Başarısız! Eksik Yerleri Doldurun');
-    return false;
-  }
+  
+  event.preventDefault()
+
+  
 
   let already = handleUser();
   if (already) {
     return false;
   }
+  
+  let validation = registerValidation();
+  if (validation == false) return false
 
   Data.push({
-    ad: reference.ad.value,
-    soyad: reference.soyad.value,
-    email: reference.email.value,
-    password: reference.password.value,
-    rePassword: reference.rePassword.value
+    ad: referance.ad.value,
+    soyad: referance.soyad.value,
+    email: referance.email.value,
+    password: referance.password.value,
+    rePassword: referance.rePassword.value
   });
+  
 
  
   
@@ -52,15 +56,57 @@ document.querySelector(".registerPageBtn").addEventListener("click", function() 
   }
 
   console.log(Data);
+  console.log(validation);
+  
 });
 
 function registerClear() {
-  reference.ad.value = "";
-  reference.soyad.value = "";
-  reference.email.value = "";
-  reference.password.value = "";
-  reference.rePassword.value = "";
+  referance.ad.value = "";
+  referance.soyad.value = "";
+  referance.email.value = "";
+  referance.password.value = "";
+  referance.rePassword.value = "";
 }
+
+function registerValidation() {
+  let formItem = [
+    {
+      name: "ad",
+      message: "Lütfen isim alanını doldurunuz",
+    },
+    {
+      name: "soyad",
+      message: "Lütfen soyad alanını doldurunuz"
+    },
+    {
+      name: "email",
+      message: "Lütfen email alanını doldurunuz",
+    },
+    {
+      name: "password",
+      message: "Lütfen şifre alanını doldurunuz"
+    },
+    {
+      name: "rePassword",
+      message: "Lütfen şifre doğrulama alanını doldurunuz"
+    }
+  ];
+
+  let formDolumu = true;
+
+  formItem.forEach(item => {
+    if (referance[item.name].value == "") {
+      document.getElementById(item.name + "-message").innerHTML = item.message;
+      formDolumu = false;
+    }
+    else {
+      document.getElementById(item.name + "-message").innerHTML = "";
+    }
+  });
+
+  return formDolumu;
+}
+
 
 function SwalSuccess(message) {
     Swal.fire(
@@ -71,7 +117,7 @@ function SwalSuccess(message) {
 function handleUser() {
     let already = false;
     Data.forEach(item => {
-      if (reference.email.value == item.email) {
+      if (referance.email.value == item.email) {
         already = true;
       }
 

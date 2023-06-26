@@ -33,25 +33,28 @@
           <h2>Kayıt Olun</h2>
         </div>
       </div>
-      <form onsubmit="">
+      <form>
         <div class="container">
           <div class="mb-3">
-            <label for="name" class="form-label name"></label>
+            <label for="ad" class="form-label name"></label>
             <input
               type="text"
-              id="name"
+              id="ad"
               class="form-control name"
               placeholder="Adınız"
             />
+            <div id="ad-message" class="form-text text-danger"></div>
           </div>
+
           <div class="mb-3">
-            <label for="lastname" class="form-label"></label>
+            <label for="soyad" class="form-label"></label>
             <input
               type="text"
-              id="lastname"
+              id="soyad"
               class="form-control lastname"
               placeholder="Soyadınız"
             />
+            <div id="soyad-message" class="form-text text-danger"></div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label"></label>
@@ -61,6 +64,7 @@
               class="form-control email"
               placeholder="Email Adres"
             />
+            <div id="email-message" class="form-text text-danger"></div>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label"></label>
@@ -70,15 +74,18 @@
               class="form-control password"
               placeholder="Şifre"
             />
+            <div id="password-message" class="form-text text-danger"></div>
           </div>
+
           <div class="mb-3">
-            <label for="re-password" class="form-label"></label>
+            <label for="rePassword" class="form-label"></label>
             <input
               type="password"
-              id="re-password"
+              id="rePassword"
               class="form-control rePassword"
               placeholder="Şifrenizi Doğrulayın"
             />
+            <div id="rePassword-message" class="form-text text-danger"></div>
           </div>
           <button type="button" class="btn btn-primary registerPageBtn">
             Kayıt Ol
