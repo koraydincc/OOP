@@ -1,4 +1,9 @@
-const Data = [];
+let Data = [];
+if (localStorage.getItem("data")) {
+  Data = JSON.parse(localStorage.getItem("data"));
+  
+} 
+
 
 const svgElementGithub = document.querySelector(".github").addEventListener("click", function () {
     window.open("https://github.com/koraydincc", "_blank");
@@ -21,52 +26,44 @@ let referance = {
 };
 
 
-document.querySelector(".registerPageBtn").addEventListener("click", function() {
-  
-  event.preventDefault()
+LS();
+const registerPageBtn = document.querySelector(".registerPageBtn");
+if (registerPageBtn) {
+  registerPageBtn.addEventListener("click", function() {
+    event.preventDefault();
 
-  
+    let already = handleUser();
+    if (already) {
+      return false;
+    }
 
-  let already = handleUser();
-  if (already) {
-    return false;
-  }
-  
-  let validation = registerValidation();
-  if (validation == false) return false
+    let validation = registerValidation();
+    if (validation == false) return false;
 
-  Data.push({
-    ad: referance.ad.value,
-    soyad: referance.soyad.value,
-    email: referance.email.value,
-    password: referance.password.value,
-    rePassword: referance.rePassword.value
+    Data.push({
+      ad: referance.ad.value,
+      soyad: referance.soyad.value,
+      email: referance.email.value,
+      password: referance.password.value,
+      rePassword: referance.rePassword.value
+    });
+
+    localStorage.setItem("data", JSON.stringify(Data));
+
+    registerClear();
+
+    if (Data.length > 0) {
+      SwalSuccess('Anasayfaya Yönlendiriliyorsunuz!');
+      setTimeout(() => {
+        GoToPage("../pages/index.html");
+      }, 2000);
+    }
+
+    console.log(Data);
+    console.log(validation);
   });
-  
-
- 
-  
-  registerClear();
-
-  if (Data.length > 0) {
-    SwalSuccess('Anasayfaya Yönlendiriliyorsunuz!');
-     setTimeout(() => {
-       GoToPage("../pages/index.html");
-     }, 2000);
-  }
-
-  console.log(Data);
-  console.log(validation);
-  
-});
-
-function registerClear() {
-  referance.ad.value = "";
-  referance.soyad.value = "";
-  referance.email.value = "";
-  referance.password.value = "";
-  referance.rePassword.value = "";
 }
+
 
 function registerValidation() {
   let formItem = [
@@ -130,6 +127,14 @@ function handleUser() {
    }
    return false;
   
+}
+
+function LS() {
+  let Data = [];
+  if (localStorage.getItem("data")) {
+    Data = JSON.parse(localStorage.getItem("data"));
+  } 
+  console.log(Data)
 }
 
 function SwalWarning(message) {
